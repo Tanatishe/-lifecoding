@@ -109,4 +109,3 @@ for idx, (roman, expected) in enumerate(test_cases, 1):
     assert result == expected
 
 print("Все тесты пройдены!")
-

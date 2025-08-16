@@ -1,8 +1,3 @@
-
-
-
-
-
 def find_max_subarray(nums: list[int], max_length: int = 2) -> tuple[list[int], int]:
     prefix_sum = [0] * len(nums)
     prefix_sum[0] = nums[0]

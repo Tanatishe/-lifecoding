@@ -1,5 +1,3 @@
-
-
 def is_valid_bracket_sequence(s: str) -> bool:
     """
     Проверяет, является ли последовательность скобок в строке правильной скобочной последовательностью.
@@ -16,19 +14,18 @@ def is_valid_bracket_sequence(s: str) -> bool:
             1. Каждой открывающей скобке соответствует закрывающая скобка того же типа.
             2. Скобки правильно вложены.
     """
-    
-    
 
-    d = dict(zip(')]}', '([{'))
+    d = dict(zip(")]}", "([{"))
     stack = []
     for c in s:
-        if c in '([{':
+        if c in "([{":
             stack.append(c)
-        elif c in ')]}':
+        elif c in ")]}":
             if not stack or stack.pop() != d[c]:
                 return False
-            
+
     return not stack
+
 
 # Тесты для is_valid_bracket_sequence
 assert is_valid_bracket_sequence("([]){}") == True

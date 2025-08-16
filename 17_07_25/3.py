@@ -7,19 +7,21 @@
 из которых представляет собой возрастающий отрезок исходной последовательности.
 """
 
+
 def fragments(numbers):
     if not numbers:
         return []
     result = []
     current = [numbers[0]]
     for i in range(1, len(numbers)):
-        if numbers[i] > numbers[i-1]:
+        if numbers[i] > numbers[i - 1]:
             current.append(numbers[i])
         else:
             result.append(current)
             current = [numbers[i]]
     result.append(current)
     return result
+
 
 # Тесты
 # Обычный случай
@@ -46,4 +48,4 @@ assert fragments(nums5) == []
 nums6 = [1, 3, 2, 4, 3, 5]
 assert fragments(nums6) == [[1, 3], [2, 4], [3, 5]]
 
-print('Все тесты для 3.py пройдены!')
+print("Все тесты для 3.py пройдены!")

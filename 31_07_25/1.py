@@ -5,6 +5,8 @@
 Рассмотрим следующий код:
 
 """
+
+
 async def isUserValid(self, user):
     for i in range(3):
         try:

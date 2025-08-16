@@ -1,7 +1,7 @@
 def analyze_student_grades():
     """
     ЗАДАЧА: Анализ успеваемости студентов
-    
+
     У вас есть словарь с данными о студентах:
     students = {
         "Иван": {"математика": 85, "физика": 92, "химия": 78},
@@ -9,94 +9,124 @@ def analyze_student_grades():
         "Петр": {"математика": 75, "физика": 80, "химия": 85},
         "Анна": {"математика": 95, "физика": 85, "химия": 90}
     }
-    
+
     ВАША ЗАДАЧА:
     1. Найти студента с наивысшим средним баллом
     2. Найти предмет с наивысшим средним баллом среди всех студентов
     3. Создать новый словарь, где ключи - предметы, а значения - список всех оценок по этому предмету
     4. Найти студента, который лучше всех сдал математику
-    
+
     ТРЕБУЕТСЯ:
     - Работа с вложенными словарями
     - Использование методов словарей (keys(), values(), items())
     - Поиск максимумов и минимумов
     - Группировка данных
     - Вычисление средних значений
-    
+
     ВЕРНУТЬ: кортеж (лучший_студент, лучший_предмет, оценки_по_предметам, лучший_по_математике)
     """
     students = {
         "Иван": {"математика": 85, "физика": 92, "химия": 78},
         "Мария": {"математика": 90, "физика": 88, "химия": 95},
         "Петр": {"математика": 75, "физика": 80, "химия": 85},
-        "Анна": {"математика": 95, "физика": 85, "химия": 90}
+        "Анна": {"математика": 95, "физика": 85, "химия": 90},
     }
- 
- 
+
 
 # ТЕСТЫ
 if __name__ == "__main__":
     result = analyze_student_grades()
     best_student, best_subject, grades_by_subject, best_math_student = result
-    
 
-    
     # Тест 1: Проверка типа возвращаемого значения
     assert isinstance(result, tuple), "Функция должна возвращать кортеж"
     assert len(result) == 4, "Кортеж должен содержать 4 элемента"
-    
+
     # Тест 2: Проверка лучшего студента
-    assert best_student == "Мария", f"Лучший студент должен быть Мария, получено: {best_student}"
-    
+    assert (
+        best_student == "Мария"
+    ), f"Лучший студент должен быть Мария, получено: {best_student}"
+
     # Тест 3: Проверка лучшего предмета
-    assert best_subject == "химия", f"Лучший предмет должен быть химия, получено: {best_subject}"
-    
+    assert (
+        best_subject == "химия"
+    ), f"Лучший предмет должен быть химия, получено: {best_subject}"
+
     # Тест 4: Проверка лучшего по математике
-    assert best_math_student == "Анна", f"Лучший по математике должен быть Анна, получено: {best_math_student}"
-    
+    assert (
+        best_math_student == "Анна"
+    ), f"Лучший по математике должен быть Анна, получено: {best_math_student}"
+
     # Тест 5: Проверка структуры grades_by_subject
     assert isinstance(grades_by_subject, dict), "grades_by_subject должен быть словарем"
-    assert "математика" in grades_by_subject, "grades_by_subject должен содержать ключ 'математика'"
-    assert "физика" in grades_by_subject, "grades_by_subject должен содержать ключ 'физика'"
-    assert "химия" in grades_by_subject, "grades_by_subject должен содержать ключ 'химия'"
-    
+    assert (
+        "математика" in grades_by_subject
+    ), "grades_by_subject должен содержать ключ 'математика'"
+    assert (
+        "физика" in grades_by_subject
+    ), "grades_by_subject должен содержать ключ 'физика'"
+    assert (
+        "химия" in grades_by_subject
+    ), "grades_by_subject должен содержать ключ 'химия'"
+
     # Тест 6: Проверка количества оценок по каждому предмету
-    assert len(grades_by_subject["математика"]) == 4, "Должно быть 4 оценки по математике"
+    assert (
+        len(grades_by_subject["математика"]) == 4
+    ), "Должно быть 4 оценки по математике"
     assert len(grades_by_subject["физика"]) == 4, "Должно быть 4 оценки по физике"
     assert len(grades_by_subject["химия"]) == 4, "Должно быть 4 оценки по химии"
-    
+
     # Тест 7: Проверка конкретных оценок по математике
     expected_math_grades = [85, 90, 75, 95]
-    assert sorted(grades_by_subject["математика"]) == sorted(expected_math_grades), \
-        f"Оценки по математике должны быть {expected_math_grades}"
-    
+    assert sorted(grades_by_subject["математика"]) == sorted(
+        expected_math_grades
+    ), f"Оценки по математике должны быть {expected_math_grades}"
+
     # Тест 8: Проверка среднего балла лучшего студента
     students = {
         "Иван": {"математика": 85, "физика": 92, "химия": 78},
         "Мария": {"математика": 90, "физика": 88, "химия": 95},
         "Петр": {"математика": 75, "физика": 80, "химия": 85},
-        "Анна": {"математика": 95, "физика": 85, "химия": 90}
+        "Анна": {"математика": 95, "физика": 85, "химия": 90},
     }
     maria_average = sum(students["Мария"].values()) / len(students["Мария"])
-    assert maria_average == 91.0, f"Средний балл Марии должен быть 91.0, получено: {maria_average}"
-    
+    assert (
+        maria_average == 91.0
+    ), f"Средний балл Марии должен быть 91.0, получено: {maria_average}"
+
     # Тест 9: Проверка среднего балла по математике
-    math_average = sum(grades_by_subject["математика"]) / len(grades_by_subject["математика"])
-    assert math_average == 86.25, f"Средний балл по математике должен быть 86.25, получено: {math_average}"
-    
+    math_average = sum(grades_by_subject["математика"]) / len(
+        grades_by_subject["математика"]
+    )
+    assert (
+        math_average == 86.25
+    ), f"Средний балл по математике должен быть 86.25, получено: {math_average}"
+
     # Тест 9.1: Проверка среднего балла по химии (лучший предмет)
-    chemistry_average = sum(grades_by_subject["химия"]) / len(grades_by_subject["химия"])
-    assert chemistry_average == 87.0, f"Средний балл по химии должен быть 87.0, получено: {chemistry_average}"
-    
+    chemistry_average = sum(grades_by_subject["химия"]) / len(
+        grades_by_subject["химия"]
+    )
+    assert (
+        chemistry_average == 87.0
+    ), f"Средний балл по химии должен быть 87.0, получено: {chemistry_average}"
+
     # Тест 10: Проверка, что все студенты имеют оценки по всем предметам
     for student in ["Иван", "Мария", "Петр", "Анна"]:
-        assert len(students[student]) == 3, f"Студент {student} должен иметь оценки по 3 предметам"
-        assert "математика" in students[student], f"Студент {student} должен иметь оценку по математике"
-        assert "физика" in students[student], f"Студент {student} должен иметь оценку по физике"
-        assert "химия" in students[student], f"Студент {student} должен иметь оценку по химии"
-    
+        assert (
+            len(students[student]) == 3
+        ), f"Студент {student} должен иметь оценки по 3 предметам"
+        assert (
+            "математика" in students[student]
+        ), f"Студент {student} должен иметь оценку по математике"
+        assert (
+            "физика" in students[student]
+        ), f"Студент {student} должен иметь оценку по физике"
+        assert (
+            "химия" in students[student]
+        ), f"Студент {student} должен иметь оценку по химии"
+
     print("Все тесты прошли успешно!")
     print(f"Лучший студент: {best_student}")
     print(f"Лучший предмет: {best_subject}")
     print(f"Лучший по математике: {best_math_student}")
-    print(f"Оценки по предметам: {grades_by_subject}") 
+    print(f"Оценки по предметам: {grades_by_subject}")

@@ -16,9 +16,10 @@ def find_subsequence_with_sum_prefix(nums, target):
         prefix_sum += num
         if (prefix_sum - target) in prefix_map:
             start = prefix_map[prefix_sum - target] + 1
-            return nums[start:i+1]
+            return nums[start : i + 1]
         prefix_map[prefix_sum] = i
     return []
+
 
 # Тесты
 nums1 = [1, 3, 76, 21, 1, 2, 45, 8, 33]
@@ -54,5 +55,4 @@ nums7 = [2, -1, 3, 1, -2, 4]
 target7 = 5
 assert find_subsequence_with_sum_prefix(nums7, target7) == [2, -1, 3, 1]
 
-print('Все тесты для 2.py пройдены!')
-
+print("Все тесты для 2.py пройдены!")
